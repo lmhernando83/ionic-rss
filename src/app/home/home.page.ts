@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FeedService } from 'src/app/service/feed.service';
+import { Feed } from 'src/app/model/feed';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
+  
+  feeds: Array<Feed>;
+  constructor(private feedService:FeedService){}
 
+  ngOnInit(){
+    
+  }
 }

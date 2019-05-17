@@ -12,7 +12,14 @@ export class HomePage implements OnInit{
   feeds: Array<Feed>;
   constructor(private feedService:FeedService){}
 
+  showFeeds(){
+    this.feedService.getFeeds().subscribe(data => {
+      return this.feeds = data;
+    });
+  }
+
   ngOnInit(){
-    
+    this.showFeeds();
   }
 }
+

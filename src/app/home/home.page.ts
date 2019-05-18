@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedService } from 'src/app/service/feed.service';
 import { Feed } from 'src/app/model/feed';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../pages/modal/modal.page';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,22 @@ import { Feed } from 'src/app/model/feed';
 export class HomePage implements OnInit{
   
   feeds: Array<Feed>;
-  constructor(private feedService:FeedService){}
+  constructor(private feedService:FeedService, private modalController: ModalController){}
 
   showFeeds(){
     this.feedService.getFeeds().subscribe(data => {
       return this.feeds = data;
     });
+  }
+
+  async openModal(feed){
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      componentProps: {
+        data: feed
+      }
+    });
+    modal.present();
   }
 
   ngOnInit(){

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       RSS Feed
     </ion-title>
@@ -7,17 +7,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-card *ngFor="let feed of feeds">
-        <ion-img width="80" height="80" [src]='feed.image'></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>{{ feed.publicationDate }}</ion-card-subtitle>
-        <ion-card-title>{{ feed.title }}</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content>
-        <div [innerHTML]='feed.text | slice:0:150'></div>
-      </ion-card-content>
-    </ion-card>
-  </div>
+  <ion-item *ngFor="let feed of feeds" (click)="openModal(feed)">
+    <ion-avatar slot="start">
+      <img [src]='feed.image'>
+    </ion-avatar>
+    <ion-label>
+      <p>{{ feed.publicationDate }}</p>
+      <h2>{{ feed.title }}</h2>
+      <p [innerHTML]='feed.text | slice:0:500'></p>
+    </ion-label>
+  </ion-item>
 </ion-content>

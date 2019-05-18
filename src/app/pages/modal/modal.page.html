@@ -1,0 +1,14 @@
+<ion-content>
+ <div class="ion-padding">
+    <ion-img width="80" height="80" [src]='feed.image'></ion-img>
+    <h1>{{ feed.title }}</h1>
+    <p [innerHTML]='feed.text'></p>
+    <ion-button [href]="feed.htmlShortUrl">Ver en Navegador</ion-button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-buttons (click)="closeModal()">Cerrar</ion-buttons>
+  </ion-toolbar>
+</ion-footer>

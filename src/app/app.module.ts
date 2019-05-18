@@ -10,15 +10,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FeedService } from './service/feed.service';
+import { ModalPage } from './pages/modal/modal.page';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    ModalPage
+  ],
+  entryComponents: [ModalPage],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
-    HttpClientModule],
+    HttpClientModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

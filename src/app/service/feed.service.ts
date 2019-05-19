@@ -19,8 +19,14 @@ export class FeedService {
     return this.httpClient.get(`${API}`)
     .pipe(
       map((data: any) => {
-        return data.page.items;
+        return this.feeds = data.page.items;
       })
     )
+  }
+
+  filterItems(searchTerm) {
+    return this.feeds.filter(feed => {
+      return feed.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
   }
 }

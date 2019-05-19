@@ -12,12 +12,17 @@ import { ModalPage } from '../pages/modal/modal.page';
 export class HomePage implements OnInit{
   
   feeds: Array<Feed>;
+  searchTerm: string = "";
   constructor(private feedService:FeedService, private modalController: ModalController){}
 
   showFeeds(){
     this.feedService.getFeeds().subscribe(data => {
       return this.feeds = data;
     });
+  }
+
+  setFilteredItems() {
+    this.feeds = this.feedService.filterItems(this.searchTerm);
   }
 
   async openModal(feed){
@@ -32,6 +37,7 @@ export class HomePage implements OnInit{
 
   ngOnInit(){
     this.showFeeds();
+    this.setFilteredItems();
   }
 }
 
